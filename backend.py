@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 def updateStates(rooms):
 	for i, room in enumerate(rooms):
-		for j, Appliance in enumerate(room['Appliances']):
+		for j, Appliance in enumerate(room['Controls']):
 			current_Appliance = ApplianceObject(Appliance)
-			rooms[i]['Appliances'][j]['State'] = current_Appliance.getState()
+			rooms[i]['Controls'][j]['State'] = current_Appliance.getState()
 	return rooms
 
 @app.context_processor
@@ -47,7 +47,7 @@ def grid():
 @authentication.login_required
 @crossdomain(origin='*')
 def button(roomNumber, accNumber):
-	current_Appliance = ApplianceObject(rooms[roomNumber]['Appliances'][accNumber])
+	current_Appliance = ApplianceObject(rooms[roomNumber]['Controls'][accNumber])
 	current_Appliance.executeAction()
 	templateData = {
 		'title' : 'WebGPIO',
