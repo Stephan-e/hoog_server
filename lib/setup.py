@@ -14,13 +14,6 @@ except Exception:
 	print("config.yml file is not valid. See exampleconfig.yml for reference")
 	exit()
 
-#check for older config file
-for i, room in enumerate(rooms):
-	if 'Controls' in room:
-		rooms[i]['Controls'] = rooms[i]['Controls']
-		rooms[i].pop('Controls', None)
-		print("Use Controls instead of Accesories in config.yml")
-
 if 'Settings' in cfg:
 	settings = cfg['Settings']
 else:
