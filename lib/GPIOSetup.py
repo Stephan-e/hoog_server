@@ -18,7 +18,7 @@ def initialState(active_value):
 		return GPIO.LOW
 
 for room in rooms:
-	for Appliance in room['Appliances']:
+	for Appliance in room['Controls']:
 		if Appliance['Type'] == 'GPIO':
 			initial_state = initialState(Appliance['ActiveState'])
 			GPIO.setup(Appliance['Pin'],
