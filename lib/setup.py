@@ -65,8 +65,9 @@ else:
 	GlobalActiveState = 1
 
 for i, room in enumerate(rooms):
-	for j, Appliance in enumerate(room['Controls']):
-		if 'Inverted' in Appliance:
-			rooms[i]['Controls'][j]['ActiveState'] = 1 - int(Appliance['Inverted'])
+	print(room)
+	for j, Control in enumerate(room['Controls']):
+		if 'Inverted' in Control:
+			rooms[i]['Controls'][j]['ActiveState'] = 1 - int(Control['Inverted'])
 		else:
 			rooms[i]['Controls'][j]['ActiveState'] = GlobalActiveState
